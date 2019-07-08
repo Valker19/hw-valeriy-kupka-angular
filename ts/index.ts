@@ -10,7 +10,10 @@ let undefined1: undefined;
 // 2. Написать функцию принимающую число и возвращающую его факториал
 // по всем правилам тайпскрипта
 
-function getFactorial(number: number): number {
+function getFactorial(number: number = 1): number {
+    if (number < 0) return;
+    if (!number) number = 1;
+
     let result: number = number;
 
     for (let index: number = number; index > 1; index--) {
@@ -24,7 +27,7 @@ function getFactorial(number: number): number {
 // до этого порядкового числа
 
 function getArrayOfFibonacciNumbers(number: number): number[] {
-    let result: number[] = [];
+    const result: number[] = [];
 
     for (let index: number = 0; index < number; index++) {
         result.length >= 2 ? result.push(result[result.length - 2] + result[result.length - 1]) : result.push(1);
