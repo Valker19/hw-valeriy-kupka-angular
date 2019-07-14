@@ -1,37 +1,59 @@
-// 1. Определить переменные для всех примитивом джавасткрипта
+// Cоздать интерфейс Converter с двумя методами from и to.
+// Его должны реализовывать три класса ToBinary, ToHexal and ToHexidecimal должны
+// переводить поступающие значения в соответствующую систему исчисления (двоичную, восьмиричную и шестнадцатеричную)
 
-let string1: string = 'type script';
-let number1: number = 0;
-let boolean1: boolean = true;
-let symbol1: symbol = Symbol('easycode');
-let null1: null = null; 
-let undefined1: undefined;
-
-// 2. Написать функцию принимающую число и возвращающую его факториал
-// по всем правилам тайпскрипта
-
-function getFactorial(number: number = 1): number {
-    if (number < 0) return;
-    if (!number) number = 1;
-
-    let result: number = number;
-
-    for (let index: number = number; index > 1; index--) {
-        result *= index - 1;
-    }
+interface Converter {
+    numberSystem: number;
     
-    return result;
+    from(value: any): number;
+    to(value: number): any;
 }
 
-// 3. Написать функцию принимающую число и возврашающую массив с числами фибоначи
-// до этого порядкового числа
-
-function getArrayOfFibonacciNumbers(number: number): number[] {
-    const result: number[] = [];
-
-    for (let index: number = 0; index < number; index++) {
-        result.length >= 2 ? result.push(result[result.length - 2] + result[result.length - 1]) : result.push(1);
+class ToBinary implements Converter {
+    public numberSystem: number = 2;
+    
+    from(value: number): number {
+        let result: any = parseInt(`${value}`, this.numberSystem);
+        if (result === isNaN) result = 0;
+        return result;
     }
     
-    return result;
+    to(value: number): number {
+        let result: string = parseInt(`${value}`).toString(this.numberSystem);
+        if (result.length < 2) result = `0${result}`;
+        return +result;
+    }
+}
+
+class ToHexal implements Converter {
+    public numberSystem: number = 8;
+
+    from(value: number): number {
+        let result: any = parseInt(`${value}`, this.numberSystem);
+        if (result === isNaN) result = 0;
+        return result;
+    }
+    
+    to(value: number): number {
+        let result: string = parseInt(`${value}`).toString(this.numberSystem);
+        if (result.length < 2) result = `0${result}`;
+        return +result;
+    }
+}
+
+class ToHexidecimal implements Converter {
+    public numberSystem: number = 16;
+
+    from(value: string): number {
+        let result: any = parseInt(value, this.numberSystem);
+        if (result === isNaN) result = 0;
+        return result;
+    }
+
+    to(value: number): string {
+        let result: string = parseInt(`${value}`).toString(this.numberSystem).toUpperCase();
+        if (result.length < 2) result = `0${result}`;
+        return result;
+    }
+
 }
