@@ -1,59 +1,76 @@
-// Cоздать интерфейс Converter с двумя методами from и to.
-// Его должны реализовывать три класса ToBinary, ToHexal and ToHexidecimal должны
-// переводить поступающие значения в соответствующую систему исчисления (двоичную, восьмиричную и шестнадцатеричную)
+// Создать класс User у которого будут поля name, age, achievement
+// Клaссу User добавить следующее методы AddYearOfLife(), AddAchievement(achievement);
+// Создать класс Achievement в котором будут следующие поля type, heroical, description
+// Поместить данные класс в неймспейс SuperHero
+// 
+// Создать инстансты классов - SpiderMan и IronMan
+// + Создать базовые интерфейсы для классов User и Achievement.
 
-interface Converter {
-    numberSystem: number;
+interface UserI {
+    name: string,
+    age: number,
+    achievements: Array<string>;
     
-    from(value: any): number;
-    to(value: number): any;
+    addYearOfLife(): void,
+    AddAchievement(achievement: string): void;
 }
 
-class ToBinary implements Converter {
-    public numberSystem: number = 2;
-    
-    from(value: number): number {
-        let result: any = parseInt(`${value}`, this.numberSystem);
-        if (result === isNaN) result = 0;
-        return result;
+interface AchievementI {
+    type: string,
+    heroical: boolean,
+    description: string
+}
+
+namespace SuperHero {
+    export class Achievement implements AchievementI {
+        constructor(public type: string, public heroical: boolean, public description: string) {
+            this.type = type;
+            this.heroical = heroical;
+            this.description = description;
+        }
     }
-    
-    to(value: number): number {
-        let result: string = parseInt(`${value}`).toString(this.numberSystem);
-        if (result.length < 2) result = `0${result}`;
-        return +result;
+
+    export class User implements UserI, Achievement {
+        public name: string
+        public age: number
+        public achievements: Array<string>
+        public type: string
+        public heroical: boolean
+        public description: string
+
+        constructor({name, age, achievements, type, heroical, description}) {
+            this.name = name;
+            this.age = age;
+            this.achievements = achievements;
+            this.type = type;
+            this.heroical = heroical;
+            this.description = description;
+        }
+
+        addYearOfLife(): void {
+            this.age++;                 // Или 'this.age += 1;'
+        }
+
+        AddAchievement(achievement: string): void {
+            this.achievements.push(achievement);
+        }
     }
 }
 
-class ToHexal implements Converter {
-    public numberSystem: number = 8;
+const spiderMan: SuperHero.User = new SuperHero.User({
+    name: 'SpiderMan',
+    age: 19,
+    achievements: ['spider', 'slyga narody'],
+    type: 'heroi',
+    heroical: true,
+    description: 'easycode'
+});
 
-    from(value: number): number {
-        let result: any = parseInt(`${value}`, this.numberSystem);
-        if (result === isNaN) result = 0;
-        return result;
-    }
-    
-    to(value: number): number {
-        let result: string = parseInt(`${value}`).toString(this.numberSystem);
-        if (result.length < 2) result = `0${result}`;
-        return +result;
-    }
-}
-
-class ToHexidecimal implements Converter {
-    public numberSystem: number = 16;
-
-    from(value: string): number {
-        let result: any = parseInt(value, this.numberSystem);
-        if (result === isNaN) result = 0;
-        return result;
-    }
-
-    to(value: number): string {
-        let result: string = parseInt(`${value}`).toString(this.numberSystem).toUpperCase();
-        if (result.length < 2) result = `0${result}`;
-        return result;
-    }
-
-}
+const ironMan: SuperHero.User = new SuperHero.User({
+    name: 'IronMan',
+    age: 16,
+    achievements: ['...', '...'],
+    type: 'super-heroi',
+    heroical: true,
+    description: 'zelenskiy'
+});
