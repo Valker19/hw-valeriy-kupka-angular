@@ -9,10 +9,10 @@
 interface UserI {
     name: string,
     age: number,
-    achievements: Array<string>;
+    achievements: Array<AchievementI>;
     
     addYearOfLife(): void,
-    AddAchievement(achievement: string): void;
+    addAchievement(achievement: AchievementI): void;
 }
 
 interface AchievementI {
@@ -30,28 +30,22 @@ namespace SuperHero {
         }
     }
 
-    export class User implements UserI, Achievement {
+    export class User implements UserI {
         public name: string
         public age: number
-        public achievements: Array<string>
-        public type: string
-        public heroical: boolean
-        public description: string
+        public achievements: Array<Achievement>
 
-        constructor({name, age, achievements, type, heroical, description}) {
+        constructor({name, age, achievements}) {
             this.name = name;
             this.age = age;
             this.achievements = achievements;
-            this.type = type;
-            this.heroical = heroical;
-            this.description = description;
         }
 
         addYearOfLife(): void {
             this.age++;                 // Или 'this.age += 1;'
         }
 
-        AddAchievement(achievement: string): void {
+        addAchievement(achievement: Achievement): void {
             this.achievements.push(achievement);
         }
     }
@@ -60,7 +54,10 @@ namespace SuperHero {
 const spiderMan: SuperHero.User = new SuperHero.User({
     name: 'SpiderMan',
     age: 19,
-    achievements: ['spider', 'slyga narody'],
+    achievements: ['spider', 'slyga narody']
+});
+
+spiderMan.addAchievement({
     type: 'heroi',
     heroical: true,
     description: 'easycode'
@@ -69,7 +66,11 @@ const spiderMan: SuperHero.User = new SuperHero.User({
 const ironMan: SuperHero.User = new SuperHero.User({
     name: 'IronMan',
     age: 16,
-    achievements: ['...', '...'],
+    achievements: ['...', '...']
+    
+});
+
+ironMan.addAchievement({
     type: 'super-heroi',
     heroical: true,
     description: 'zelenskiy'
