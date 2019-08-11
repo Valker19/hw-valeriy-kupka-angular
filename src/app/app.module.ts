@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { GalleryComponent } from './gallery.component';
+import { SelectedImgComponent } from './selectedImage.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GalleryComponent
+    GalleryComponent,
+    SelectedImgComponent
   ],
   imports: [
     BrowserModule

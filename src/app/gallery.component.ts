@@ -1,34 +1,22 @@
-import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { fromEvent } from 'rxjs';
-import { bufferCount } from 'rxjs/operators';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'app-gallery',
-    templateUrl: './gallery.component.html'
+    templateUrl: './gallery.component.html',
+    styleUrls: ['./gallery.component.scss']
 })
 
-export class GalleryComponent implements AfterViewInit {
-    @ViewChild('btn', { static: false })
-    btn: ElementRef;
+export class GalleryComponent {
+    @Input()    
+        public imgSrc1: string = 'https://luckypony.co.za/wp-content/uploads/2011/07/img_9786-480x480-300x300.jpg';
+        public imgSrc2: string = 'https://raidline.com/image/cache/catalog/shop/CATEGORIES/Overwatch_RaidLine.com_Boost_OW-480x480.jpg';
+        public imgSrc3: string = 'https://www.buubble.com/wp-content/uploads/2018/01/instagram-iimage-uai-480x480.jpg';
+        public imgSrc4: string = 'http://park72.ru/wp-content/uploads/2019/03/30751965-g1sZbXU2Qu21PboY71IBA__vbF7Ok3nZFDXnx0-OGIk-1538338732-728-27e63c047f-1547377195-480x480.jpg';
+    
+    @Output()
+        public selectedImg = new EventEmitter();
 
-    imgSrc: string = 'https://s.0564.ua/section/cataloglogo/upload/images/catalog/000/001/260/bez-nazvania_5c53e1f6845c0.jpg';
-    buttonText: string = 'Click!';
-
-    // and you must change life cycle hook, because reference to the element will appear only when the dom is raised 
-    ngAfterViewInit(): void {
-        this.buttonClick();
-    }
-
-    buttonClick(): void {
-        // or you can do the same with the viewchild decorator
-        // sure it should be better, if we talk about angular application
-        const publisher = fromEvent(this.btn.nativeElement, 'click')
-            .pipe(bufferCount(4));
-
-        // dont't forget call unsubscribe method of the subscriber on ondestroy hook
-        // but in this case it's not necessary
-        const subscriber = publisher.subscribe(() => {
-            alert('Button pressed 4 times');
-        })
-    }
+        public handleClick($event): void {
+            this.selectedImg.emit($event);
+        }
 }
