@@ -1,34 +1,24 @@
-import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { fromEvent } from 'rxjs';
-import { bufferCount } from 'rxjs/operators';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'app-gallery',
-    templateUrl: './gallery.component.html'
+    templateUrl: './gallery.component.html',
+    styleUrls: ['./gallery.component.scss']
 })
 
-export class GalleryComponent implements AfterViewInit {
-    @ViewChild('btn', { static: false })
-    btn: ElementRef;
+export class GalleryComponent {
+    @Input()
+        public imagesSrc: Object = {
+            imgSrc1: 'https://zapadbaltobuv.ru/image/cache/no_image-210x210.png',
+            imgSrc2: 'https://zapadbaltobuv.ru/image/cache/no_image-210x210.png',
+            imgSrc3: 'https://zapadbaltobuv.ru/image/cache/no_image-210x210.png',
+            imgSrc4: 'https://zapadbaltobuv.ru/image/cache/no_image-210x210.png'
+        }
 
-    imgSrc: string = 'https://s.0564.ua/section/cataloglogo/upload/images/catalog/000/001/260/bez-nazvania_5c53e1f6845c0.jpg';
-    buttonText: string = 'Click!';
+    @Output()
+        public selectedImg = new EventEmitter();
 
-    // and you must change life cycle hook, because reference to the element will appear only when the dom is raised 
-    ngAfterViewInit(): void {
-        this.buttonClick();
-    }
-
-    buttonClick(): void {
-        // or you can do the same with the viewchild decorator
-        // sure it should be better, if we talk about angular application
-        const publisher = fromEvent(this.btn.nativeElement, 'click')
-            .pipe(bufferCount(4));
-
-        // dont't forget call unsubscribe method of the subscriber on ondestroy hook
-        // but in this case it's not necessary
-        const subscriber = publisher.subscribe(() => {
-            alert('Button pressed 4 times');
-        })
-    }
+        public handleClick($event): void {
+            this.selectedImg.emit($event);
+        }
 }
