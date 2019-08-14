@@ -12,5 +12,5 @@ import { Component, Input } from '@angular/core';
 
 export class SelectedImgComponent {
     @Input()
-        public selectedImgSrc: string = 'https://revizion.info/filez/sample.png'
+        public selectedImgSrc: string;
 }
