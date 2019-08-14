@@ -1,28 +1,7 @@
 <div class="container">
     <div class="row text-center">
-        <div class="col-3">
-            <img (click)='handleClick($event)' [src]="imagesSrc.imgSrc1">
-        </div>
-        <div class="col-3">
-            <img (click)='handleClick($event)' [src]="imagesSrc.imgSrc1">
-        </div>
-        <div class="col-3">
-            <img (click)='handleClick($event)' [src]="imagesSrc.imgSrc2">
-        </div>
-        <div class="col-3">
-            <img (click)='handleClick($event)' [src]="imagesSrc.imgSrc2">
-        </div>
-        <div class="col-3">
-            <img (click)='handleClick($event)' [src]="imagesSrc.imgSrc3">
-        </div>
-        <div class="col-3">
-            <img (click)='handleClick($event)' [src]="imagesSrc.imgSrc3">
-        </div>
-        <div class="col-3">
-            <img (click)='handleClick($event)' [src]="imagesSrc.imgSrc4">
-        </div>
-        <div class="col-3">
-            <img (click)='handleClick($event)' [src]="imagesSrc.imgSrc4">
+        <div *ngFor='let image of imagesSrc' class="col-3">
+            <img (click)='handleClick($event)' [src]="image">
         </div>
     </div>
 </div>
