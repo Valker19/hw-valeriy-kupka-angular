@@ -1,4 +1,5 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { LoadImagesService } from './loadImages.service';
 
 @Component({
     selector: 'app-gallery',
@@ -6,14 +7,14 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
     styleUrls: ['./gallery.component.scss']
 })
 
-export class GalleryComponent {
-    @Input()
+export class GalleryComponent implements OnInit {
         public imagesSrc: Array<string>;
 
-    @Output()
-        public selectedImg = new EventEmitter();
+        constructor(public service: LoadImagesService) {
+        
+        }
 
-        public handleClick($event): void {
-            this.selectedImg.emit($event);
+        ngOnInit(): void {
+            this.imagesSrc = this.service.images;
         }
 }

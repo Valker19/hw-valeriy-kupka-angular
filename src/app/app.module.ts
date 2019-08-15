@@ -3,18 +3,19 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { GalleryComponent } from './gallery.component';
-import { SelectedImgComponent } from './selectedImage.component';
+import { LoadImagesService } from './loadImages.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GalleryComponent,
-    SelectedImgComponent
+    GalleryComponent
   ],
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [
+    LoadImagesService
+  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
