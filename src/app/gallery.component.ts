@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
     selector: 'app-gallery',
@@ -6,7 +6,11 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
         <div>
           <img *ngFor="let url of images" [src]="url"/>
         </div>
-    `
+    `,
+    // angular has two kinds of ChangeDetectionStrategy: default and onpush. default setted by default, that's mean if angular application state will change
+    // angular come deeper from parent component to every children that he has. but if we're set onpush strategy on the omponent - angular will skip him
+    // he launches the component, if this component receive some new inputs from the parent component
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class GalleryComponent implements OnChanges {
