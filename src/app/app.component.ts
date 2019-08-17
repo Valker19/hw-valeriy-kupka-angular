@@ -1,19 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { LoadImagesService } from './loadImages.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   template: `
-    <img *ngFor='let image of images' [src]='image' width='200' height='200'>
+    <app-image-input (imageSrc)='handleImageSrc($event)'></app-image-input>
+    <app-gallery [imageSrc]='image'></app-gallery>
   `
 })
 
-export class AppComponent implements OnInit {
-  public images: Array<string>;
-  
-  constructor(public service: LoadImagesService) {}
+export class AppComponent {
+  public image: string;
 
-  ngOnInit(): void {
-    this.images = this.service.images;
+  public handleImageSrc($event): void {
+    this.image = $event;
   }
 }
