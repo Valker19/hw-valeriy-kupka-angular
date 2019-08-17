@@ -3,18 +3,18 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { ClockComponent } from './clock.component';
-import { MorsePipe } from './morse.pipe';
+import { GalleryComponent } from './gallery.component';
+import { ImageInputComponent } from './imageInput.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    ClockComponent,
-    MorsePipe
+    GalleryComponent,
+    ImageInputComponent
   ],
   imports: [
-      BrowserModule,
-      FormsModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [ AppComponent ]

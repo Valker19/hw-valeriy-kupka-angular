@@ -3,12 +3,15 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-    <h4>{{title | morse}}</h4>
-    <input type="text" [(ngModel)]='title'>
-    <app-clock></app-clock>
-    `
+    <app-image-input (imageSrc)='handleImageSrc($event)'></app-image-input>
+    <app-gallery [imageSrc]='image'></app-gallery>
+  `
 })
 
 export class AppComponent {
-  public title: string = 'Test)';
+  public image: string;
+
+  public handleImageSrc($event): void {
+    this.image = $event;
+  }
 }
