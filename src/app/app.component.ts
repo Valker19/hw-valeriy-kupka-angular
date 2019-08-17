@@ -15,5 +15,5 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.images = this.service.images;
-  }
+  }   
 }
