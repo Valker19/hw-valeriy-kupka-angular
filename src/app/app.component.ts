@@ -11,7 +11,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   public image: string;
 
-  public handleImageSrc($event): void {
+  public handleImageSrc($event: string): void {
     this.image = $event;
   }
 }

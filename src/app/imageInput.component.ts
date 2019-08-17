@@ -9,10 +9,11 @@ import { Component, Output, EventEmitter } from '@angular/core';
 
 export class ImageInputComponent {
     @Output()
-    public imageSrc = new EventEmitter<string>();
+    private imageSrc = new EventEmitter<string>();
     
-    public handleInput($event): void {
-        this.imageSrc.emit($event.target.value)
-        $event.target.value = '';
+    public handleInput($event: Event): void {
+        const target = $event.target as HTMLInputElement;
+        this.imageSrc.emit(target.value)
+        target.value = '';
     }
 }
