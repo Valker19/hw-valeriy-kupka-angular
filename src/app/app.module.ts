@@ -1,22 +1,26 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { GalleryComponent } from './gallery.component';
-import { ImageInputComponent } from './imageInput.component'
+import {
+  CounterComponent,
+  DecrementComponent,
+  IncrementComponent,
+  ResetComponent
+} from './components'
 
 @NgModule({
   declarations: [
     AppComponent,
-    GalleryComponent,
-    ImageInputComponent
+    CounterComponent,
+    DecrementComponent,
+    IncrementComponent,
+    ResetComponent
   ],
   imports: [
-    BrowserModule,
-    FormsModule
+    BrowserModule
   ],
   providers: [],
-  bootstrap: [ AppComponent ]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

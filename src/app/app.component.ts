@@ -3,15 +3,13 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-    <app-image-input (imageSrc)='handleImageSrc($event)'></app-image-input>
-    <app-gallery [imageSrc]='image'></app-gallery>
-  `
+    <div class="wrapper">
+      <app-counter-component></app-counter-component>
+      <app-decrement-component></app-decrement-component>
+      <app-increment-component></app-increment-component>
+      <app-reset-component></app-reset-component>
+    </div>
+    `
 })
 
-export class AppComponent {
-  public image: string;
-
-  public handleImageSrc($event: string): void {
-    this.image = $event;
-  }
-}
+export class AppComponent { }
