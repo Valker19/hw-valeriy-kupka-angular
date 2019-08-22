@@ -1,0 +1,7 @@
+<mat-grid-list cols="4" rowHeight="570px">
+    <mat-grid-tile *ngFor="let publication of publications">
+        <card-image-component [publication]="publication"></card-image-component>
+    </mat-grid-tile>
+</mat-grid-list>
+
+<!-- Картинки можно загружать только до 235px, потому что кривой список, я не нашел лучше чем этот -->
