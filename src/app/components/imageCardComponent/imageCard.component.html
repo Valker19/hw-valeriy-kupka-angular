@@ -1,19 +1,19 @@
 <mat-card class="image-card">
     <mat-card-header>
-        <div mat-card-avatar class="image-header-image" [style.background-image]="getAvatarImage()"></div>
-        <mat-card-title>{{publication.author}}</mat-card-title>
-        <mat-card-subtitle><a>{{publication.place}}</a></mat-card-subtitle>
+        <div mat-card-avatar class="image-header-image" [style.background-image]="getAvatarImage"></div>
+        <mat-card-title>{{ publication.author }}</mat-card-title>
+        <mat-card-subtitle><a>{{ publication.place }}</a></mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image [src]="publication.cardImage" (dblclick)="onFullscreen($event)">
+    <mat-card-content>
+        <img mat-card-image [src]="publication.cardImage" (dblclick)="onFullscreen($event)">
+        <div class="image-card-likes">Нравится: {{ publication.likes }}</div>
+        <p>{{publication.description}}</p>
+    </mat-card-content>
     <mat-card-actions>
         <button mat-icon-button color="warn" aria-label="Example icon-button with a heart icon" (click)="like()">
             <mat-icon>favorite</mat-icon>
         </button>
     </mat-card-actions>
-    <mat-card-content>
-        <div class="image-card-likes">Нравится: {{publication.likes}}</div>
-        <p>{{publication.description}}</p>
-    </mat-card-content>
 </mat-card>
 
 <!-- Example -->

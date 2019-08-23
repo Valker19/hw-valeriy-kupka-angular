@@ -13,13 +13,14 @@ export class AddPublicationComponent {
     @ViewChild('selectImage', { static: false })
     imageInput: ElementRef;
 
-    constructor(private service: GalleryService) { };
+    constructor(private service: GalleryService) { }
 
-    handleLoadImage($event) {
-        this.service.addPublication($event.target.files[0]);
+    handleLoadImage($event: Event): void {
+        const target = $event.target as HTMLInputElement;
+        this.service.addPublication(target.files[0]);
     }
 
-    openLink() {
+    openLink(): void {
         this.imageInput.nativeElement.click();
     }
 }

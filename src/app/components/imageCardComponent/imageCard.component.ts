@@ -13,20 +13,17 @@ export class ImageCardComponent {
     @Input()
         publication: imageCardContent;
 
-    public getAvatarImage(): string {
+    public get getAvatarImage(): string {
         return `url(${this.publication.avatarImage})`;
     }
 
     public like(): void {
-        if (this.likeOn === false) {
-            this.likeOn = true;
-            this.publication.likes += 1;
-        } else {
-            this.likeOn = false; this.publication.likes -= 1;
-        } 
+        const likes = this.publication.likes;
+        this.publication.likes = !this.likeOn ? likes + 1 : likes - 1;
+        this.likeOn = !this.likeOn;
     }
 
-    public onFullscreen($event) {
-        $event.target.requestFullscreen();
+    public onFullscreen($event: Event): void {
+        ($event.target as HTMLImageElement).requestFullscreen();
     }
 }

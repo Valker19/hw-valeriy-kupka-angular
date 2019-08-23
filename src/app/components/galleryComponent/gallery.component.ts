@@ -10,11 +10,11 @@ import { imageCardContent } from 'src/app/models';
 export class GalleryComponent implements OnInit {
     publications: Array<imageCardContent> = [];
 
-    constructor(private service: GalleryService) { };
+    constructor(private service: GalleryService) { }
 
     ngOnInit(): void {
         this.service.publication.subscribe(
-            (publication) => {
+            (publication: imageCardContent) => {
                 this.publications.push(publication)
             }
         )

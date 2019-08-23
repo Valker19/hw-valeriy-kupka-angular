@@ -4,11 +4,11 @@ import { imageCardContent } from '../models';
 export class GalleryService {
     public publication: EventEmitter<imageCardContent> = new EventEmitter<imageCardContent>();
 
-    set publicationContent(value: imageCardContent) {
+    private set publicationContent(value: imageCardContent) {
         this.publication.emit(value);
     }
 
-    getImageContent(): imageCardContent {
+    private getImageContent(): imageCardContent {
         const result = {
             author: 'username_111',
             avatarImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHV2zPP7AaVFZ3pFafne_Pp2l8AFYn-127xOijlDlimMJuZR9b',
@@ -22,7 +22,7 @@ export class GalleryService {
         return result;
     }
 
-    addPublication(image: File) {
+    addPublication(image: File): void {
         const reader = new FileReader();
         reader.readAsDataURL(image);
         reader.addEventListener('loadend', () => {
@@ -32,6 +32,6 @@ export class GalleryService {
             publication.likes = Math.round(Math.random() * 1000);
 
             this.publicationContent = publication;
-        })
+        });
     }
 }
