@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "HomeworkAngular": {
+    "Homework12-Photo-stock": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/HomeworkAngular",
+            "outputPath": "dist/Homework12-Photo-stock",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -67,18 +67,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "HomeworkAngular:build"
+            "browserTarget": "Homework12-Photo-stock:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "HomeworkAngular:build:production"
+              "browserTarget": "Homework12-Photo-stock:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "HomeworkAngular:build"
+            "browserTarget": "Homework12-Photo-stock:build"
           }
         },
         "test": {
@@ -115,15 +115,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "HomeworkAngular:serve"
+            "devServerTarget": "Homework12-Photo-stock:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "HomeworkAngular:serve:production"
+              "devServerTarget": "Homework12-Photo-stock:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "HomeworkAngular"
+  "defaultProject": "Homework12-Photo-stock"
 }

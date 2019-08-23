@@ -1,0 +1,1 @@
+export { imageCardContent } from './imageCardContent'

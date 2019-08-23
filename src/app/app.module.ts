@@ -1,25 +1,40 @@
+// Angular additions
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-
+// Material UI
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatGridListModule } from '@angular/material/grid-list';
+// Components
 import { AppComponent } from './app.component';
-import { GalleryComponent } from './gallery.component';
-import { ImageInputComponent } from './imageInput.component'
-import { ImageLoadService } from './imageLoad.service';
+import {
+  GalleryComponent,
+  ImageCardComponent,
+  AddPublicationComponent
+} from './components';
+import { GalleryService } from './services/gallery.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     GalleryComponent,
-    ImageInputComponent
+    ImageCardComponent,
+    AddPublicationComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+    MatGridListModule
   ],
   providers: [
-    ImageLoadService
+    GalleryService
   ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [AppComponent]
 })
+
 export class AppModule { }
